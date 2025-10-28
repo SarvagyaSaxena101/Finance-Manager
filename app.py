@@ -33,10 +33,11 @@ def init_connections():
     Caches the connections for performance.
     """
     try:
-        # Check for Firebase config
-        if not os.path.exists("app_files/firebase_config.json"):
-            st.error("Firebase config file not found! Please add `firebase_config.json` to the `app_files` directory.")
+        # Check for Firebase config in secrets
+        if "firebase" not in st.secrets:
+            st.error("Firebase configuration not found in Streamlit secrets! Please add your Firebase config to `secrets.toml`.")
             st.stop()
+        firebase_config = st.secrets["firebase"]
 
         # Check for Groq API key
         groq_api_key = os.environ.get("GROQ_API_KEY")
@@ -44,9 +45,9 @@ def init_connections():
             st.error("GROQ_API_KEY not found! Please create a `.env` file in the project root and add `GROQ_API_KEY=\"YOUR_API_KEY\"`.")
             st.stop()
 
-        initialize_firebase()
+        initialize_firebase(firebase_config)
         db = get_firestore_db()
-        auth = initialize_pyrebase()
+        auth = initialize_pyrebase(firebase_config)
         groq_client = Groq(api_key=groq_api_key)
         return db, auth, groq_client
     except Exception as e:
