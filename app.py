@@ -77,6 +77,14 @@ def login_signup():
     
     st.markdown("<p style='text-align: center; color: var(--text-color);'>Login or Sign Up to manage your finances.</p>", unsafe_allow_html=True)
 
+    security_disclaimer = """
+    <div class="security-disclaimer">
+        <h3>Your Security, Our Priority</h3>
+        <p>Your privacy and data security are paramount. On our login and signup pages, all information you submit is protected with industry-standard encryption protocols (SSL/TLS) to ensure secure transmission. We utilize robust authentication mechanisms to safeguard your account from unauthorized access. Your personal data is stored securely, with access restricted to authorized personnel only, and is never shared with third parties without your explicit consent. We are committed to maintaining the highest standards of data protection to keep your information safe and private.</p>
+    </div>
+    """
+    st.markdown(security_disclaimer, unsafe_allow_html=True)
+
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
         with st.container(border=True):

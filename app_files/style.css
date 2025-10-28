@@ -78,3 +78,25 @@ body {
 .stProgress>div>div {
     background-color: var(--primary-color);
 }
+
+/* Security Disclaimer Styles */
+.security-disclaimer {
+    background-color: var(--secondary-background-color);
+    border-left: 5px solid var(--primary-color);
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+.security-disclaimer h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.1em;
+}
+
+.security-disclaimer p {
+    margin-bottom: 0;
+}
